@@ -256,7 +256,7 @@ Rails.application.config.sorcery.configure do |config|
     # your mailer class. Required.
     # Default: `nil`
     #
-    # user.user_activation_mailer =
+    user.user_activation_mailer = ActivationMailer
 
 
     # when true sorcery will not automatically
@@ -307,7 +307,7 @@ Rails.application.config.sorcery.configure do |config|
     # mailer class. Needed.
     # Default: `nil`
     #
-    # user.reset_password_mailer =
+    user.reset_password_mailer = ResetPasswordMailer
 
 
     # reset password email method on your mailer class.
@@ -352,11 +352,11 @@ Rails.application.config.sorcery.configure do |config|
     # How many failed logins allowed.
     # Default: `50`
     #
-    # user.consecutive_login_retries_amount_limit =
+    user.consecutive_login_retries_amount_limit = 10
 
 
     # How long the user should be banned. in seconds. 0 for permanent.
-    # Default: `60 * 60`
+    # Default: `30 * 60`
     #
     # user.login_lock_time_period =
 
