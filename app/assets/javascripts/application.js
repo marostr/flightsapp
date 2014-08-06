@@ -14,7 +14,4 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require retina-1.1.0.min
-//= require clingify
-//= require flights
 //= require_tree .

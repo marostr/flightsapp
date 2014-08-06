@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  expose(:user)
+  expose(:user, attributes: :user_params)
 
   def create
     if user.save
@@ -29,12 +29,12 @@ class UsersController < ApplicationController
 
   def claim_password
     if request.post?
-      if user = User.where(email: params[:email]).first
+      if user = User.where(email: params[:user][:email]).first
         user.deliver_reset_password_instructions!
         redirect_to(login_path, notice: 'Password instructions were sent to your email.')
       else
         flash.now[:error] = 'Email not found.'
-        render 'reset'
+        render :claim_password
       end
     end
   end
@@ -42,8 +42,8 @@ class UsersController < ApplicationController
   def reset_password
     user = User.load_from_reset_password_token params[:id]
     if request.post?
-      if pass_params[:password] == pass_params[:password_confirmation]
-        user.change_password! pass_params[:password]
+      if pass_params[:user][:password].eql? pass_params[:user][:password_confirmation]
+        user.change_password! pass_params[:user][:password]
         redirect_to(login_path, notice: 'Password successfully changed.')
       else
         flash.now[:error] = 'Passwords do not match'

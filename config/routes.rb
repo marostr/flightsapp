@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     collection do
       get :claim_password
       post :claim_password
-      get :account
-      post :account
+      get :edit
+      post :update
     end
   end
   get 'login' => 'user_sessions#new', as: :login

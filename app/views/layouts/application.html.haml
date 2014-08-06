@@ -17,10 +17,10 @@
       <script src="plugins/html5shiv/dist/html5shiv.js"></script>
       <script src="plugins/respond/respond.min.js"></script>
     / Le fav and touch icons - @todo: fill with your icons or remove
-    %link{href: "icons/favicon.png", rel: "shortcut icon"}/
-    %link{href: "icons/114x114.png", rel: "apple-touch-icon-precomposed", sizes: "114x114"}/
-    %link{href: "icons/72x72.png", rel: "apple-touch-icon-precomposed", sizes: "72x72"}/
-    %link{href: "icons/default.png", rel: "apple-touch-icon-precomposed"}/
+    -#%link{href: "icons/favicon.png", rel: "shortcut icon"}/
+    -#%link{href: "icons/114x114.png", rel: "apple-touch-icon-precomposed", sizes: "114x114"}/
+    -#%link{href: "icons/72x72.png", rel: "apple-touch-icon-precomposed", sizes: "72x72"}/
+    -#%link{href: "icons/default.png", rel: "apple-touch-icon-precomposed"}/
     %link{href: "http://fonts.googleapis.com/css?family=Open+Sans:400,700,300", rel: "stylesheet", type: "text/css"}/
     %link{href: "http://fonts.googleapis.com/css?family=Rambla", rel: "stylesheet", type: "text/css"}/
     %link{href: "http://fonts.googleapis.com/css?family=Calligraffitti", rel: "stylesheet", type: "text/css"}/
@@ -140,7 +140,7 @@
               %a.search-form-tigger{"data-target" => ".header-search", "data-toggle" => "search-form", href: "#search"}
                 %i.fa.fa-search.fa-flip-horizontal.search-icon
               / mobile collapse menu button - data-toggle="toggle" = default BS menu - data-toggle="jpanel-menu" = jPanel Menu
-              %a.navbar-btn{"data-direction" => "right", "data-target" => ".navbar-collapse", "data-toggle" => "jpanel-menu", href: "#top"}
+              %a.navbar-btn{"data-direction" => "right", "data-target" => ".navbar-collapse", "data-toggle" => "jpanel-menuNO", href: "#top"}
                 %i.fa.fa-bars
               / everything within this div is collapsed on mobile
               .navbar-collapse.collapse
