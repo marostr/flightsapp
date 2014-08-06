@@ -1,0 +1,8 @@
+.row
+  .col-xs-8.col-xs-offset-2
+    %h4 Sign in!
+    .push
+    = simple_form_for :user do |f|
+      = f.input :email
+      = f.input :password
+      = f.submit class: "btn btn-primary"

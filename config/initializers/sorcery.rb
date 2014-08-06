@@ -352,7 +352,7 @@ Rails.application.config.sorcery.configure do |config|
     # How many failed logins allowed.
     # Default: `50`
     #
-    user.consecutive_login_retries_amount_limit = 10
+    # user.consecutive_login_retries_amount_limit = 10
 
 
     # How long the user should be banned. in seconds. 0 for permanent.
