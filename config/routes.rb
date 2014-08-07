@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get :claim_password
       post :claim_password
       get :edit
-      post :update
+      put :update
     end
   end
   get 'login' => 'user_sessions#new', as: :login

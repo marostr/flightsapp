@@ -63,6 +63,7 @@ GEM
       execjs
     coffee-script-source (1.7.1)
     colorize (0.7.3)
+    curb (0.8.6)
     database_cleaner (1.2.0)
     decent_decoration (0.0.6)
       decent_exposure (>= 2.0)
@@ -107,6 +108,9 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     jwt (1.0.0)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     listen (2.7.9)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -247,6 +251,7 @@ DEPENDENCIES
   bootstrap-sass
   capistrano-rails
   coffee-rails (~> 4.0.0)
+  curb
   database_cleaner (~> 1.2.0)
   decent_decoration
   decent_exposure
@@ -258,6 +263,7 @@ DEPENDENCIES
   haml
   jquery-rails
   json
+  kaminari
   quiet_assets
   rails (= 4.1.4)
   rb-fsevent

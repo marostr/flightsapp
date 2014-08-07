@@ -1,0 +1,23 @@
+#login-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4.modal-title
+          Login
+      .modal-body
+        %form{action: "login.htm", role: "form"}
+        = simple_form_for :user, url: log_in_path do |f|
+          .form-group
+            = f.input :email
+          .form-group
+            = f.input :password
+          = f.submit 'Login', class: 'btn btn-primary'
+      .modal-footer
+        %small
+          Not a member?
+          %a.signup{href: "#"} Sign up now!
+        %br/
+        %small
+          %a{href: "#"} Forgotten password?
+

@@ -91,8 +91,12 @@
                 .btn-group.user-menu
                   %a.btn.btn-link.login-mobile{href: "login.htm"}
                     %i.fa.fa-user
-                  %a.btn.btn-link.signup{"data-toggle" => "modal", href: "#signup-modal"} Sign Up
-                  %a.btn.btn-link.login{"data-toggle" => "modal", href: "#login-modal"} Login
+                  - if logged_in?
+                    = form_tag logout_path do
+                      = submit_tag 'Logout TODO', class: 'btn btn-link'
+                  - else
+                    %a.btn.btn-link.signup{"data-toggle" => "modal", href: "#signup-modal"} Sign Up
+                    %a.btn.btn-link.login{"data-toggle" => "modal", href: "#login-modal"} Login
                   .btn-group.language-menu
                     / language menu
                     %a.btn.btn-link.dropdown-toggle{"data-toggle" => "dropdown", href: "#en"}
@@ -470,29 +474,7 @@
         / /.modal-dialog
       / /.modal
       / @modal - login modal
-      #login-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
-        .modal-dialog
-          .modal-content
-            .modal-header
-              %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-              %h4.modal-title
-                Login
-            .modal-body
-              %form{action: "login.htm", role: "form"}
-                .form-group
-                  %label.sr-only{for: "login-email"} Email
-                  %input#login-email.form-control.email{placeholder: "Email", type: "email"}/
-                .form-group
-                  %label.sr-only{for: "login-password"} Password
-                  %input#login-password.form-control.password{placeholder: "Password", type: "password"}/
-                %button.btn.btn-primary{type: "button"} Login
-            .modal-footer
-              %small
-                Not a member?
-                %a.signup{href: "#"} Sign up now!
-              %br/
-              %small
-                %a{href: "#"} Forgotten password?
-          / /.modal-content
-        / /.modal-dialog
+      = render 'layouts/login_modal'
+      / /.modal-content
+      / /.modal-dialog
       / /.modal
