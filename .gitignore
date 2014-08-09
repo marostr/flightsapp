@@ -17,3 +17,4 @@
 .ruby-version
 .ruby-gemset
 *.swp
+config/database.yml

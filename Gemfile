@@ -50,6 +50,7 @@ group :test do
 end
 # Use Capistrano for deployment
 gem 'capistrano', group: :development
+gem 'capistrano-rvm', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
