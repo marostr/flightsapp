@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  # Users and sessions related stuff
   resources :users, except: [:edit, :update] do
     member do
       get :activate
@@ -15,6 +14,9 @@ Rails.application.routes.draw do
       put :update
     end
   end
+
+  resources :flights
+
   get 'login' => 'user_sessions#new', as: :login
   post 'login' => 'user_sessions#create', as: :log_in
   post 'logout' => 'user_sessions#destroy', as: :logout

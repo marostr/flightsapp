@@ -1,0 +1,4 @@
+%hr
+%p= link_to "Flight from #{flight.departure_airport.full_name} to #{flight.arrival_airport.full_name}", flight_path(flight)
+%p= "Departures at #{flight.departure_date} and arrives at #{flight.arrival_date}"
+%hr

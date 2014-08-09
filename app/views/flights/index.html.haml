@@ -1,0 +1,5 @@
+- if flights.present?
+  - flights.each do |flight|
+    = render 'flight', flight: flight
+- else
+  No flights

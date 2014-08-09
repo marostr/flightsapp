@@ -17,7 +17,7 @@ gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
 gem 'sorcery'
 gem 'json'
 gem 'curb'
-gem 'kaminari'
+gem 'nokogiri'
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -32,7 +32,7 @@ gem 'quiet_assets',  group: :development
 # gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
-#  gem 'pry'
+  gem 'pry'
 #  gem 'pry-debugger'
   gem 'rspec-nc'
   gem 'spring-commands-rspec'
@@ -49,7 +49,7 @@ group :test do
   gem 'simplecov', require: false
 end
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
+gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
