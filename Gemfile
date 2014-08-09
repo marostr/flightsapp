@@ -18,7 +18,7 @@ gem 'sorcery'
 gem 'json'
 gem 'curb'
 gem 'nokogiri'
-gem 'psql'
+gem 'pg'
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
