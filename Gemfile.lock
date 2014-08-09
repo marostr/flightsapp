@@ -279,7 +279,6 @@ DEPENDENCIES
   psql
   quiet_assets
   rails (= 4.1.4)
-  rb-fsevent
   rspec-nc
   rspec-rails
   sass-rails (~> 4.0.3)
