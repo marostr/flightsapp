@@ -81,6 +81,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Email
+  config.action_mailer.default_url_options = { host: "flightsapp.tk" }
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :sendmail
 end
