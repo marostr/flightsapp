@@ -83,13 +83,13 @@ Rails.application.configure do
   # Email
   config.action_mailer.default_url_options = { host: "flightsapp.tk" }
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer..smtp_settings = {
+    :user_name => ENV['NF_SENDGRID_USERNAME']
+    :password => ENV['NF_SENDGRID_PASSWORD'],
+    :domain => ENV['NF_SENDGRID_DOMAIN'],
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end
-ActionMailer::Base.smtp_settings = {
-  :user_name => ENV['NF_SENDGRID_USERNAME']
-  :password => ENV['NF_SENDGRID_PASSWORD'],
-  :domain => ENV['NF_SENDGRID_DOMAIN'],
-  :address => 'smtp.sendgrid.net',
-  :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
-}
