@@ -1,1 +1,5 @@
-%h1 tu content
+%h1 Welcome to FlightsApp site!
+- unless logged_in?
+  %p Sign up or login to continue.
+- else
+  = link_to "Browse your flights.", flights_path

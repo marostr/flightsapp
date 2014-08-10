@@ -2,3 +2,9 @@
 %p= "Departures at #{flight.departure_date} and arrives at #{flight.arrival_date}"
 %p= "Current price: #{number_to_currency(flight.prices.last.normal, unit: flight.prices.last.currency, format: "%n %u")}."
 %p= "Last updated at: #{flight.updated_at}."
+= simple_form_for flight, url: refresh_flight_path(flight), method: :post do |f|
+  = f.submit "Refresh flight!", class: 'btn btn-primary'
+%p Prices history
+- flight.prices.order('updated_at DESC').each do |price|
+  %p= "#{number_to_currency(price.normal, unit: price.currency, format: "%n %u")} at #{price.updated_at}."
+

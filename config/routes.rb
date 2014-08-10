@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :flights
+  resources :flights do
+    post :refresh, on: :member
+  end
 
   get 'login' => 'user_sessions#new', as: :login
   post 'login' => 'user_sessions#create', as: :log_in

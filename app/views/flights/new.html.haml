@@ -1,0 +1,11 @@
+= simple_form_for flight do |f|
+  = f.simple_fields_for :departure_airport do | d_airport_f |
+    %p Departure airport
+    = d_airport_f.input :name
+    = d_airport_f.input :full_name
+  = f.simple_fields_for :arrival_airport do | a_airport_f |
+    %p Arrival airport
+    = a_airport_f.input :name
+    = a_airport_f.input :full_name
+  = f.input :departure_date
+  = f.submit 'Create flight', class: 'btn btn-primary'
