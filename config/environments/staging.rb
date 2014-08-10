@@ -84,7 +84,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "flightsapp.tk" }
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer..smtp_settings = {
-    :user_name => ENV['NF_SENDGRID_USERNAME']
+    :user_name => ENV['NF_SENDGRID_USERNAME'],
     :password => ENV['NF_SENDGRID_PASSWORD'],
     :domain => ENV['NF_SENDGRID_DOMAIN'],
     :address => 'smtp.sendgrid.net',
