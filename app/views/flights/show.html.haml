@@ -1,4 +1,4 @@
-%h2= "Flight from #{flight.departure_airport.full_name}(#{flight.departure_airport.name}) to #{flight.arrival_airport.full_name}(#{flight.arrival_airport.name})."
+%h2= "Flight from #{flight.departure_airport.full_name} #{flight.departure_airport.name} to #{flight.arrival_airport.full_name} #{flight.arrival_airport.name}."
 %p= "Departures at #{flight.departure_date} and arrives at #{flight.arrival_date}"
 %p= "Current price: #{number_to_currency(flight.prices.last.normal, unit: flight.prices.last.currency, format: "%n %u")}."
 %p= "Last updated at: #{flight.updated_at}."
