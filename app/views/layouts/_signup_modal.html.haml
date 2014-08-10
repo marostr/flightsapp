@@ -1,0 +1,19 @@
+#signup-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4.modal-title
+          Sign Up
+      .modal-body
+        %h5 Account Information
+        .form-group
+          = simple_form_for :user, url: users_path, method: :post do |f|
+            = f.input :email, label: false, placeholder: 'Email address'
+            = f.input :password, label: false, placeholder: 'Password'
+            = f.input :password_confirmation, label: false, placeholder: 'Password confirmation'
+            = f.submit "Sign up", class: 'btn btn-primary'
+      .modal-footer
+        %small
+          Already signed up?
+          = link_to "Login here", login_path

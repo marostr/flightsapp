@@ -6,12 +6,11 @@
         %h4.modal-title
           Login
       .modal-body
-        %form{action: "login.htm", role: "form"}
         = simple_form_for :user, url: log_in_path do |f|
           .form-group
-            = f.input :email
+            = f.input :email, label: false, placeholder: 'Email address'
           .form-group
-            = f.input :password
+            = f.input :password, label: false, placeholder: 'Password'
           = f.submit 'Login', class: 'btn btn-primary'
       .modal-footer
         %small

@@ -134,12 +134,12 @@
             .navbar
               .pull-left
                 / branding/logo
-                %a.navbar-brand{href: "index.htm", title: "Home"}
+                = link_to root_path, class: 'navbar-brand' do
                   %h1
-                    %span> App
-                    Strap
+                    %span> Flights
+                    App
                     %span .
-                .slogan Responsive HTML Theme
+                .slogan WizzAir prices notifier
               / Search trigger
               %a.search-form-tigger{"data-target" => ".header-search", "data-toggle" => "search-form", href: "#search"}
                 %i.fa.fa-search.fa-flip-horizontal.search-icon
@@ -151,7 +151,7 @@
                 / main navigation
                 %ul.nav.navbar-nav
                   %li.home-link
-                    %a{href: "index.htm"}
+                    = link_to root_path do
                       %i.fa.fa-home
                       %span.hidden Home
                   %li.dropdown
@@ -343,6 +343,12 @@
                         %a.menu-item{href: "bs-mobile-menu.htm", role: "menuitem", tabindex: "-1"} Bootstrap Mobile Menu
               / /.navbar-collapse
     / ======== @Region: #content ========
+    #flash
+      .container
+        .row
+          .col-xs-8.col-xs-offset-2
+            .push
+            = render_flash
     #content
       .container
         .row
@@ -428,50 +434,7 @@
     / Hidden elements - excluded from jPanel Menu on mobile
     .hidden-elements.jpanel-menu-exclude
       / @modal - signup modal
-      #signup-modal.modal.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
-        .modal-dialog
-          .modal-content
-            .modal-header
-              %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-              %h4.modal-title
-                Sign Up
-            .modal-body
-              %form{action: "signup.htm", role: "form"}
-                %h5
-                  Price Plan
-                %select.form-control
-                  %option Basic
-                  %option Pro
-                  %option Pro +
-                %h5
-                  Account Information
-                .form-group
-                  %label.sr-only{for: "signup-first-name"} First Name
-                  %input#signup-first-name.form-control{placeholder: "First name", type: "text"}/
-                .form-group
-                  %label.sr-only{for: "signup-last-name"} Last Name
-                  %input#signup-last-name.form-control{placeholder: "Last name", type: "text"}/
-                .form-group
-                  %label.sr-only{for: "signup-username"} Userame
-                  %input#signup-username.form-control{placeholder: "Username", type: "text"}/
-                .form-group
-                  %label.sr-only{for: "signup-email"} Email address
-                  %input#signup-email.form-control{placeholder: "Email address", type: "email"}/
-                .form-group
-                  %label.sr-only{for: "signup-password"} Password
-                  %input#signup-password.form-control{placeholder: "Password", type: "password"}/
-                .checkbox
-                  %label
-                    %input{type: "checkbox", value: "term"}/
-                    I agree with the Terms and Conditions.
-                %button.btn.btn-primary{type: "submit"} Sign up
-            .modal-footer
-              %small
-                Already signed up?
-                = succeed "." do
-                  %a{href: "login.htm"} Login here
-          / /.modal-content
-        / /.modal-dialog
+      = render 'layouts/signup_modal'
       / /.modal
       / @modal - login modal
       = render 'layouts/login_modal'

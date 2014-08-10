@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def create
     if user.save
-      redirect_to root_path, notice: "success"
+      redirect_to root_path, notice: 'Account successfully created. Check your inbox for activation link.'
     else
       render 'new'
     end
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def update
     if user.save
-      redirect_to account_path, notice: 'Account successfully updated'
+      redirect_to account_path, notice: 'Account successfully updated.'
     else
         flash.now[:error] = 'error'
       render 'edit'
