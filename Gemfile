@@ -19,6 +19,7 @@ gem 'json'
 gem 'curb'
 gem 'nokogiri'
 gem 'pg'
+gem 'delayed_job_active_record'
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
