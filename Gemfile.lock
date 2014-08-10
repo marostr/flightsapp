@@ -67,6 +67,7 @@ GEM
     coffee-script-source (1.7.1)
     colorize (0.7.3)
     curb (0.8.6)
+    daemons (1.1.9)
     database_cleaner (1.2.0)
     decent_decoration (0.0.6)
       decent_exposure (>= 2.0)
@@ -268,6 +269,7 @@ DEPENDENCIES
   capistrano-rvm
   coffee-rails (~> 4.0.0)
   curb
+  daemons
   database_cleaner (~> 1.2.0)
   decent_decoration
   decent_exposure
