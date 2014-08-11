@@ -6,5 +6,5 @@ class Airport < ActiveRecord::Base
                           join_table: 'airports_connections',
                           foreign_key: 'airport_id',
                           association_foreign_key: 'connected_airport_id'
-  validates_associated :connected_airports
+  validates_presence_of :name
 end

@@ -1,9 +1,11 @@
 = simple_form_for flight do |f|
   = f.simple_fields_for :departure_airport do | d_airport_f |
     %p Departure airport
-    = d_airport_f.input :name, url: autocomplete_airport_name_flights_path, as: :autocomplete
+    = d_airport_f.input :name, url: autocomplete_airport_name_flights_path, as: :autocomplete, id_element: '#flight_departure_airport_airport_id'
+    = d_airport_f.hidden_field :airport_id
   = f.simple_fields_for :arrival_airport do | a_airport_f |
     %p Arrival airport
-    = a_airport_f.input :name
-  = f.input :departure_date
+    = a_airport_f.input :name, url: autocomplete_airport_name_flights_path, as: :autocomplete, id_element: '#flight_arrival_airport_airport_id'
+    = a_airport_f.hidden_field :airport_id
+  = f.input :departure_date, as: :date, order: [:day, :month, :year]
   = f.submit 'Create flight', class: 'btn btn-primary'
