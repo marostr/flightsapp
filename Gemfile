@@ -22,6 +22,7 @@ gem 'pg'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'rails4-autocomplete'
+gem 'jquery-ui-rails'
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

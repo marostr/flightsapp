@@ -1,6 +1,7 @@
 class FlightsController < ApplicationController
   expose(:flights) { current_user.flights }
   expose(:flight)
+  autocomplete(:airport, :name, full: true)
 
   def create
     flight = Flight.new
