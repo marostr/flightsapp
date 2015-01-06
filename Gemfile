@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.1.4'
 gem 'sqlite3', group: :development
 gem 'sass-rails', '~> 4.0.3'
@@ -23,6 +22,7 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'rails4-autocomplete'
 gem 'jquery-ui-rails'
+gem 'letter_opener'
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
