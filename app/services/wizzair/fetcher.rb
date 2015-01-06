@@ -1,23 +1,15 @@
 module Wizzair
   class Fetcher
-    attr_accessor :response
+    attr_accessor :response, :fetcher
 
     def initialize(flight, origin = nil, destination = nil, date = nil)
       @flight = flight
-      if @flight.new_record?
-        @origin = origin
-        @destination = destination
-        @date = date
-      else
-        @origin = @flight.departure_airport.name
-        @destination = @flight.arrival_airport.name
-        @date = @flight.departure_date.strftime("%F")
-      end
-
-      create_params
-      create_get_headers
-      create_post_headers
-      setup_curl
+      @fetcher =
+        if @flight.persisted?
+          Wizzair::Fetchers::UpdateFlight.new(flight)
+        else
+          Wizzair::Fetchers::NewFlight.new(flight, origin, destination, date)
+        end
     end
 
     def call!
