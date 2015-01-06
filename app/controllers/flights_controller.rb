@@ -16,7 +16,7 @@ class FlightsController < ApplicationController
   end
 
   def refresh
-    fetcher = Wizzair::Fetcher::UpdateFlight.new(flight)
+    fetcher = Wizzair::Fetchers::UpdateFlight.new(flight)
     fetcher.call!
     if flight.save
       redirect_to flight, notice: "Flight successfully updated."
