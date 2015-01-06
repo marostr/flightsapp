@@ -6,8 +6,7 @@ class FlightsController < ApplicationController
   def create
     flight = Flight.new
     flight.user = current_user
-    departure_date = "#{params[:flight]['departure_date(1i)']}-#{params[:flight]['departure_date(2i)']}-#{params[:flight]['departure_date(3i)']}"
-    fetcher = Wizzair::Fetcher.new(flight, params[:flight][:departure_airport][:name], params[:flight][:arrival_airport][:name], departure_date).fetcher
+    fetcher = Wizzair::Fetchers::NewFlight.new(flight, departure_airport_name, arrival_airport_name, departure_date)
     fetcher.call!
     if flight.save
       redirect_to flight, notice: "Flight successfully created."
@@ -17,12 +16,30 @@ class FlightsController < ApplicationController
   end
 
   def refresh
-    fetcher = Wizzair::Fetcher.new(flight).fetcher
+    fetcher = Wizzair::Fetcher::UpdateFlight.new(flight)
     fetcher.call!
     if flight.save
       redirect_to flight, notice: "Flight successfully updated."
     else
       redirect_to flight, warning: "Error."
     end
+  end
+
+  private
+
+  def departure_airport_name
+    flight_params[:departure_airport][:name]
+  end
+
+  def arrival_airport_name
+    flight_params[:arrival_airport][:name]
+  end
+
+  def departure_date
+    "#{flight_params['departure_date(1i)']}-#{flight_params['departure_date(2i)']}-#{flight_params['departure_date(3i)']}"
+  end
+
+  def flight_params
+    params[:flight]
   end
 end
