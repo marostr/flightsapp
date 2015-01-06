@@ -1,5 +1,5 @@
-module Flights
-  class WizzResponse
+module Wizzair
+  class Response
     attr_accessor :departure_date, :arrival_date, :discount_price, :normal_price, :currency
 
     def initialize(departure_date, arrival_date, dprice, price, currency)

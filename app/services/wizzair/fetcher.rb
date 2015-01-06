@@ -1,5 +1,5 @@
-module Flights
-  class Wizzair
+module Wizzair
+  class Fetcher
     attr_accessor :response
 
     def initialize(flight, origin = nil, destination = nil, date = nil)
@@ -71,6 +71,7 @@ module Flights
         "ControlGroupRibbonAnonHomeView$AvailabilitySearchInputRibbonAnonHomeView$ButtonSubmit"=>"Szukaj",
         "__EVENTTARGET" => "ControlGroupRibbonAnonHomeView_AvailabilitySearchInputRibbonAnonHomeView_ButtonSubmit",
         "cookiePolicyDismissed" => true,
+        'pageToken' => '',
         "__VIEWSTATE" => "/wEPDwUBMGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFWkNvbnRyb2xHcm91cFJpYmJvbkFub25Ib21lVmlldyRBdmFpbGFiaWxpdHlTZWFyY2hJbnB1dFJpYmJvbkFub25Ib21lVmlldyRTdHVkZXRTZW5pb3JHcm91cLcMW6Bfdi6XQ3jIOh46M/Uyyf+xnV2YpSj4opm7Zf8k" }
 
       ### CONVERT HASH TO POST FIELDS ###
@@ -84,8 +85,8 @@ module Flights
         "Accept-Language"=>"pl,en;q=0.8",
         "Connection"=>"keep-alive",
         "DNT"=>1,
-        "Referer" => "http://wizzair.com/pl-PL/Search",
-        "User-Agent"=>"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36",
+        "Referer" => "https://wizzair.com/pl-PL/Search",
+        "User-Agent"=>"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36",
         "Host"=>"wizzair.com"}
     end
 
@@ -94,7 +95,7 @@ module Flights
       @post_headers = {
        "Cache-Control" => "max-age=0",
        "Content-Type" => "application/x-www-form-urlencoded",
-       "Origin" => "http://wizzair.com" }
+       "Origin" => "https://wizzair.com" }
       @post_headers.merge!(@get_headers)
     end
 
@@ -104,7 +105,7 @@ module Flights
       @c.enable_cookies = true
       @c.follow_location = true
       @c.encoding = 'utf-8'
-      @c.url = "http://wizzair.com/pl-PL/Search"
+      @c.url = "https://wizzair.com/pl-PL/Search"
     end
 
     def curl_get_cookies
@@ -112,6 +113,10 @@ module Flights
       ### COOOOKIES?! WHO HAVE COOOOKIES?! ####
       @c.headers = @get_headers
       @c.get
+      page = ::Nokogiri::HTML(@c.body)
+      key = page.css('form').children[4].attributes['name'].value
+      value = page.css('form').children[4].attributes['value'].value
+      @data << Curl::PostField.content(key, value)
     end
 
     def curl_post_data
@@ -134,7 +139,7 @@ module Flights
       dprice = flight.search('.price')[1].child.content
       price = flight.search('.price')[3].child.content
       currency = price.split(" ")[1]
-      @response = Flights::WizzResponse.new(departure, arrival, dprice.to_f, price.to_f, currency)
+      @response = Wizzair::Response.new(departure, arrival, dprice.to_f, price.to_f, currency)
     end
   end
 end
