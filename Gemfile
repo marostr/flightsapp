@@ -23,6 +23,8 @@ gem 'daemons'
 gem 'rails4-autocomplete'
 gem 'jquery-ui-rails'
 gem 'letter_opener'
+gem 'better_errors'
+gem 'binding_of_caller'
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

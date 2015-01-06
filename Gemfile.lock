@@ -40,6 +40,12 @@ GEM
     autoprefixer-rails (2.2.0.20140727)
       execjs
     bcrypt (3.1.7)
+    better_errors (2.1.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
     builder (3.2.2)
@@ -70,6 +76,7 @@ GEM
     curb (0.8.6)
     daemons (1.1.9)
     database_cleaner (1.2.0)
+    debug_inspector (0.0.2)
     decent_decoration (0.0.6)
       decent_exposure (>= 2.0)
     decent_exposure (2.3.2)
@@ -272,6 +279,8 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
+  better_errors
+  binding_of_caller
   bootstrap-sass
   capistrano
   capistrano-rails
