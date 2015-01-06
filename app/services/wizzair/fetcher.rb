@@ -20,7 +20,7 @@ module Wizzair
       setup_curl
     end
 
-    def commence!
+    def call!
       curl_get_cookies
       curl_post_data
       parse_html
