@@ -3,7 +3,7 @@ require 'open-uri'
 namespace :flights do
   desc "SEED WIZZ AIRPORTS FROM WEB"
   task seed_wizz_airports: :environment do
-    map = Nokogiri::XML(open('http://cdn.wizzair.com/en-GB/Map.ashx'))
+    map = Nokogiri::XML(open('https://cdn.wizzair.com/en-GB/Map.ashx'))
     create_airports(map)
     map.at_css('list').children.each do |city|
       next unless city.at_css('iata')
