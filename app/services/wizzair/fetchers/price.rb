@@ -6,8 +6,8 @@ module Wizzair
 
       delegate :get_headers, :post_headers, :post_params, to: :params
 
-      def initialize(departure, destination, date)
-        @params = Wizzair::Params.new(departure, destination, date)
+      def initialize(departure_airport, destination_airport, date)
+        @params = Wizzair::Params.new(departure_airport, destination_airport, date)
       end
 
       def call!

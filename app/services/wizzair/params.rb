@@ -1,18 +1,18 @@
 module Wizzair
   class Params
 
-    attr_reader :departure, :destination, :date
+    attr_reader :departure_airport, :destination_airport, :date
 
-    def initialize(departure, destination, date)
-      @departure = departure
-      @destination = destination
+    def initialize(departure_airport, destination_airport, date)
+      @departure_airport = departure_airport
+      @destination_airport = destination_airport
       @date = date
     end
 
     def post_params
       ### SET POST PARAMS ###
-      data_hash ||= {"ControlGroupRibbonAnonHomeView$AvailabilitySearchInputRibbonAnonHomeView$OriginStation"=> departure,
-        "ControlGroupRibbonAnonHomeView$AvailabilitySearchInputRibbonAnonHomeView$DestinationStation"=> destination,
+      data_hash ||= {"ControlGroupRibbonAnonHomeView$AvailabilitySearchInputRibbonAnonHomeView$OriginStation"=> departure_airport,
+        "ControlGroupRibbonAnonHomeView$AvailabilitySearchInputRibbonAnonHomeView$DestinationStation"=> destination_airport,
         "ControlGroupRibbonAnonHomeView$AvailabilitySearchInputRibbonAnonHomeView$DepartureDate"=> date,
         "ControlGroupRibbonAnonHomeView$AvailabilitySearchInputRibbonAnonHomeView$PaxCountADT"=>1,
         "ControlGroupRibbonAnonHomeView$AvailabilitySearchInputRibbonAnonHomeView$PaxCountCHD"=>0,
