@@ -48,7 +48,6 @@ module Wizzair
       def parse_html
         results = Wizzair::Parser.new(@curl.body).results
         Wizzair::Response.new(results)
-        binding.pry
       end
 
     end
