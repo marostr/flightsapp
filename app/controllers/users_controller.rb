@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
   def create
     if user.save
-      redirect_to root_path, notice: 'Account successfully created. Check your inbox for activation link.'
+      user.activate!
+      redirect_to root_path, notice: 'Account successfully created.'
     else
       render 'new'
     end
