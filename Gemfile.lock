@@ -39,7 +39,7 @@ GEM
     arel (5.0.1.20140414130214)
     autoprefixer-rails (2.2.0.20140727)
       execjs
-    bcrypt (3.1.7)
+    bcrypt (3.1.10)
     better_errors (2.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
