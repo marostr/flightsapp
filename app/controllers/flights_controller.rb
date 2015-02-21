@@ -7,9 +7,9 @@ class FlightsController < ApplicationController
     flight_factory = FlightFactory.new(current_user, departure_airport, destination_airport, date)
     flight = flight_factory.create
     if flight.save
-      redirect_to flight, notice: "Flight successfully created."
+      redirect_to flight, notice: 'Flight successfully created.'
     else
-      render 'new'
+      render 'new', warning: 'Error.'
     end
   end
 
@@ -17,9 +17,9 @@ class FlightsController < ApplicationController
     fetcher = Wizzair::Fetchers::UpdateFlight.new(flight)
     fetcher.call!
     if flight.save
-      redirect_to flight, notice: "Flight successfully updated."
+      redirect_to flight, notice: 'Flight successfully updated.'
     else
-      redirect_to flight, warning: "Error."
+      redirect_to flight, warning: 'Error.'
     end
   end
 

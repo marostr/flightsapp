@@ -9,4 +9,6 @@ class Flight < ActiveRecord::Base
   scope :with_name, -> (name) { where('lower(name) ILIKE ?', name.downcase) }
   scope :with_full_name, -> (name) { where('lower(full_name) ILIKE ?', name.downcase) }
 
+  validates_presence_of :user
+
 end

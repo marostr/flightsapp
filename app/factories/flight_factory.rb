@@ -6,10 +6,10 @@ class FlightFactory < FlightAbstractFactory
     @departure_airport = departure_airport
     @destination_airport = destination_airport
     @date = date
+    @flight = Flight.new
   end
 
   def create
-    price_fetcher = Wizzair::Fetchers::Price.new(departure_airport, destination_airport, date)
     @response = price_fetcher.call
     if response.success?
       create_or_find_airports
@@ -27,7 +27,6 @@ class FlightFactory < FlightAbstractFactory
   end
 
   def create_flight
-    @flight = Flight.new
     flight.user = user
     flight.departure_airport = departure_airport
     flight.destination_airport = destination_airport
@@ -38,6 +37,10 @@ class FlightFactory < FlightAbstractFactory
   def update_price
     updater = PriceUpdater.new(flight, response.body[:price], response.body[:currency])
     updater.call!
+  end
+
+  def price_fetcher
+    @price_fetcher ||= Wizzair::Fetchers::Price.new(departure_airport, destination_airport, date)
   end
 
 end
