@@ -18,3 +18,4 @@
 .ruby-gemset
 *.swp
 config/database.yml
+*.*~
