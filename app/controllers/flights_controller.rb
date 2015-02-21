@@ -4,10 +4,8 @@ class FlightsController < ApplicationController
   autocomplete(:airport, :name, full: true)
 
   def create
-    flight = Flight.new
-    flight.user = current_user
-    fetcher = Wizzair::Fetchers::NewFlight.new(flight, departure_airport_name, arrival_airport_name, departure_date)
-    fetcher.call!
+    flight_factory = FlightFactory.new(current_user, departure_airport, destination_airport, date)
+    flight = flight_factory.create
     if flight.save
       redirect_to flight, notice: "Flight successfully created."
     else
@@ -27,15 +25,15 @@ class FlightsController < ApplicationController
 
   private
 
-  def departure_airport_name
+  def departure_airport
     flight_params[:departure_airport][:name]
   end
 
-  def arrival_airport_name
+  def destination_airport
     flight_params[:arrival_airport][:name]
   end
 
-  def departure_date
+  def date
     "#{flight_params['departure_date(1i)']}-#{flight_params['departure_date(2i)']}-#{flight_params['departure_date(3i)']}"
   end
 
