@@ -51,8 +51,12 @@ module Wizzair
       @arrival_date ||= dates['data-flight-arrival'].value.split("T").join(" ")
     end
 
+    def full_price
+      @full_price ||= flight.search('.price')[3].child.content.delete("'\xC2\xA0'")
+    end
+
     def price
-      @price ||= flight.search('.price')[3].child.content
+      @price ||= full_price.split(' ').first
     end
 
     def discount_price
@@ -60,7 +64,7 @@ module Wizzair
     end
 
     def currency
-        @currency ||= price.split(" ")[1]
+      @currency ||= full_price.split(' ').last
     end
 
   end

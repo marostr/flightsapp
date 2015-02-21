@@ -23,9 +23,9 @@ class PriceUpdater
     Price.create(normal: price, currency: currency, flight: flight)
   end
 
-  def update_price(last_price)
-    if last_price.normal.eql?(price)
-      price.touch
+  def update_price
+    if last_price.normal.to_f.eql?(price.to_f)
+      last_price.touch
     else
       create_price
     end
