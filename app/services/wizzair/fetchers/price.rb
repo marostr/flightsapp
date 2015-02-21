@@ -10,7 +10,7 @@ module Wizzair
         @params = Wizzair::Params.new(departure_airport, destination_airport, date)
       end
 
-      def call!
+      def call
         setup_curl
         curl_get_cookies
         curl_post_data
