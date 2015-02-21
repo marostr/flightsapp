@@ -1,13 +1,21 @@
 module Wizzair
   class Response
-    attr_accessor :departure_date, :arrival_date, :discount_price, :normal_price, :currency
+    attr_accessor :results
 
-    def initialize(departure_date, arrival_date, dprice, price, currency)
-      @departure_date = departure_date
-      @arrival_date = arrival_date
-      @discount_price = dprice
-      @normal_price = price
-      @currency = currency
+    def initialize(results)
+      @results = results
+    end
+
+    def body
+      results
+    end
+
+    def success?
+      results[:error].present?
+    end
+
+    def failure?
+      !success?
     end
   end
 end
