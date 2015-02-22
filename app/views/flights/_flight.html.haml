@@ -1,4 +1,4 @@
-%hr
-%p= link_to "Flight from #{flight.departure_airport.full_name} #{flight.departure_airport.name} to #{flight.destination_airport.full_name} #{flight.destination_airport.name}", flight_path(flight)
-%p= "Departures at #{flight.departure_date} and arrives at #{flight.arrival_date}"
+%p= link_to flight.description, flight_path(flight.id)
+%p= flight.dates
+%p= flight.current_price
 %hr
