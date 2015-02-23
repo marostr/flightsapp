@@ -11,7 +11,7 @@ module Wizzair
     end
 
     def success?
-      results[:error].nil?
+      results.present? && results[:error].nil?
     end
 
     def failure?
