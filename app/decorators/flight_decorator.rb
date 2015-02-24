@@ -16,6 +16,7 @@ class FlightDecorator < Draper::Decorator
 
   def price
     price = prices.last
+    return unless price.present?
     price.normal.to_s + price.currency
   end
 
