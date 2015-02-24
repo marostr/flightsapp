@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :notifications
+
   resources :flights do
     get :autocomplete_airport_name, on: :collection
     post :refresh, on: :member
