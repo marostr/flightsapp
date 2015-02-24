@@ -1,0 +1,4 @@
+.notifications
+  - notifications.each do |notification|
+    .notification
+      = link_to 'Notification', notification_path(notification), class: notification.read ? :read : :unread
