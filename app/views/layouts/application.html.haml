@@ -93,7 +93,9 @@
                     %i.fa.fa-user
                   - if logged_in?
                     = form_tag logout_path do
-                      = submit_tag 'Logout TODO', class: 'btn btn-link'
+                      = submit_tag 'Logout', class: 'btn btn-link'
+                    .notifications_count
+                      = current_user.decorate.unread_notifications
                   - else
                     %a.btn.btn-link.signup{"data-toggle" => "modal", href: "#signup-modal"} Sign Up
                     %a.btn.btn-link.login{"data-toggle" => "modal", href: "#login-modal"} Login
