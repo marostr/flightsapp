@@ -4,3 +4,20 @@
 .push {
   margin-top: 30px;
 }
+
+.notifications_count {
+  a {
+    color: #fff;
+    &:hover {
+      color: gray;
+    }
+  }
+}
+
+.notification {
+  a {
+    &.unread {
+      font-weight: bold;
+    }
+  }
+}
