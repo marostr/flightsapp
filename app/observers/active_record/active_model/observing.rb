@@ -30,10 +30,6 @@ module ActivModel
         observer_instances.each { |observer| observer.update(*args) }
       end
 
-      def observers_count
-        observer_instances.size
-      end
-
       protected
 
       def instantiate_observer(observer)
@@ -44,8 +40,7 @@ module ActivModel
           observer.instance
         else
           raise ArgumentError,
-            "#{observer} must be a lowercase, underscored class name (or " +
-            "the class itself) responding to the method :instance. " +
+            "#{observer} responding to the method :instance. " +
             "Example: Price.observers = :flight # calls " +
             "Flight.instance"
         end
@@ -90,11 +85,6 @@ module ActivModel
       self.class.observed_classes
     end
 
-    def update(observed_method, object, *extra_args, &block)
-      return if !respond_to?(observed_method) || disabled_for?(object)
-      send(observed_method, object, *extra_args, &block)
-    end
-
     def observed_class_inherited(subclass)
       self.class.observe(observed_classes + [subclass])
       add_observer!(subclass)
@@ -106,10 +96,5 @@ module ActivModel
       klass.add_observer(self)
     end
 
-    def disabled_for?(object)
-      klass = object.class
-      return false unless klass.respond_to?(:observers)
-      klass.observers.disabled_for?(self)
-    end
   end
 end
